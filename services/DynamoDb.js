@@ -29,7 +29,6 @@ module.exports = class DynamoDB extends Service {
       return prev;
     }, {});
 
-    console.log(this.fields, this.expressionAttributes);
     this.tableName = tableName;
   }
   put(Item) {
@@ -63,12 +62,6 @@ module.exports = class DynamoDB extends Service {
   }
 
   get(id) {
-    console.log('GET ID', {
-      TableName: this.tableName,
-      Key: { id },
-      ProjectionExpression: this.fields.join(', '),
-      ExpressionAttributeNames: this.expressionAttributes,
-    });
     return docClient
       .get({
         TableName: this.tableName,
@@ -108,7 +101,6 @@ module.exports = class DynamoDB extends Service {
 }
 
 function parseItem(response) {
-  console.log(response);
   return response.Item || response.Items;
 }
 

@@ -14,7 +14,8 @@
     "start": "node server",
     "build": "webpack --config client/webpack.config.js",
     "client": "webpack-dev-server --config client/webpack.config.js",
-    "watch": "nodemon server"
+    "server": "nodemon server",
+    "watch": "npm run server"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "express-session": "^1.13.0",
     "express-tenant": "^0.1.2",
     "graphql": "^0.6.0",
+    "graphql-tools": "^0.5.0",
     "http-proxy": "^1.13.3",
     "jsonwebtoken": "^7.0.0",
     "mongoose": "^4.4.19",
