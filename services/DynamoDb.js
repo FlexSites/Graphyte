@@ -87,10 +87,8 @@ module.exports = class DynamoDB extends Service {
   }
 
   query(params) {
-    console.time('dynamo');
     return docClient.query(params)
       .promise()
-      .tap(() => console.timeEnd('dynamo'))
       .then(parseItem);
   }
 
