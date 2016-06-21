@@ -13,18 +13,14 @@ const app = express();
 
 
 app.use(json());
+app.use(cors());
 app.use((req, res, next) => {
   let platformId = req.get(PLATFORM_HEADER);
   if (!platformId) return next(new BadRequestError(`Header "${PLATFORM_HEADER}" is required.`));
   req.tenant = tenancy.tenant(platformId);
   next();
 });
-app.use((req, res, next) => {
-  let allowOrigins = req.tenant.config.allowOrigins;
-  cors({
-    origin: allowOrigins ? (host, cb) => cb(null, !!~allowOrigins.indexOf(host)) : true,
-  })(req, res, next);
-});
+
 
 // app.use(staticMiddleware);
 // app.use(express.static(path.resolve(__dirname, '../client/dist')));
