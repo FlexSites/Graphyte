@@ -105,8 +105,9 @@ function parseItem(response) {
 }
 
 function replaceEmpty(obj) {
-  if (obj === null) return;
+  if (obj === null) return {};
   for (var prop in obj) {
+    if (!obj.hasOwnProperty(prop)) continue;
     let val = obj[prop];
     if (Array.isArray(obj)) obj[prop] = val.filter(v => !isEmpty(v));
     else if (typeof val === 'object') replaceEmpty(val);

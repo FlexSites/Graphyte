@@ -18,7 +18,7 @@ module.exports = class GraphQL extends Service {
     })
   }
 
-  mock(query, context, variables) {
+  mock(query) {
     return this.schema.then(schema => {
       return mockServer(schema).query(query);
     })

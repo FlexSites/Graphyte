@@ -19,7 +19,7 @@ module.exports = function(req, res, next) {
   console.time('Fetching user');
   return auth0
     .getUserByToken(token.split(' ')[1])
-    .then((user) => req.user = user)
+    .then((user) => (req.user = user))
     .tap(() => next())
     .catch(next);
 }

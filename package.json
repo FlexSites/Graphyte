@@ -15,7 +15,8 @@
     "build": "webpack --config client/webpack.config.js",
     "client": "webpack-dev-server --config client/webpack.config.js",
     "server": "nodemon server",
-    "watch": "npm run server"
+    "watch": "npm run server",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",

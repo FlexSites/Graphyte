@@ -18,7 +18,7 @@ app.use((req, res, next) => {
   let platformId = req.get(PLATFORM_HEADER);
   if (!platformId) return next(new BadRequestError(`Header "${PLATFORM_HEADER}" is required.`));
   req.tenant = tenancy.tenant(platformId);
-  next();
+  return next();
 });
 
 
